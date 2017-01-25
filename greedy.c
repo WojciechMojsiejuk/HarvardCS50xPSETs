@@ -20,7 +20,7 @@ int main(void)
         }
     }
 
-    while(change >= 0)
+    while(change > 0)
     {
         coins++;
         if(change - 25 >= 0)
@@ -46,8 +46,8 @@ int main(void)
         else
         {   
             coins--;
-            printf("%i\n", coins);
             break;
         }
     }
+    printf("%i\n", coins);
 }
