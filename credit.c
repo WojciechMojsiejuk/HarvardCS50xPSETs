@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdio.h>//jak narazie, program sprawdza ilość cyfr, i powinien sprawdzać też
 #include <cs50.h> //częściowo zgodność z kartami AMEX, ale gubi typ long long przy
 #include <math.h> //przeniesieniu do funkcji ;-;
@@ -30,12 +29,13 @@ int main(void)
 
 
 
-long long check_comp(n, c)//num_card, countd
+long long check_comp(long long n,long long c)//num_card, countd
 {   //to niżej to pełne sprawdzenie, bo karty AMEX mają 15 cyfr, a dwie pierwsze to 34 lub 37
-    //if(((c == 15) && (floor(n / pow(10, 13))) == 34) || (floor(n / pow(10, 13)) == 37))
-    printf("zmienne: %i, %i \n", n, c);//tu widać, że n i c, czyli num_card i countd
+    printf("zmienne: %lli, %lli \n", n, c);
+    if(((c == 15) && (floor(n / pow(10, 13))) == 34) || (floor(n / pow(10, 13)) == 37))
+    //tu widać, że n i c, czyli num_card i countd
 //mają typ integer, chociaż wcześniej były long long, przez co n num_card się rozwala
-    if((c == 15) && (floor(n / pow(10, 13))) == 37)
+    //if((c == 15) && (floor(n / pow(10, 13))) == 37)
     {
         printf("karta AMEX rozpoznana\n");
     }
