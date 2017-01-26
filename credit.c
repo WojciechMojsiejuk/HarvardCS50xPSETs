@@ -22,7 +22,7 @@ int main(void)
     
     //printf("number of digits %lli\n", countd);
     
-    check_algo(num_card, flag);
+    check_algo(num_card, &flag);
     
     if(flag == 0)//ten if powinien zamknąć program, jak algorytm się nie zgadza ;-;
     {
@@ -62,7 +62,7 @@ long long check_comp(long long n,long long c)//num_card, countd
 }
 
 
-long long check_algo(long long n, int flag)//n = num_card
+long long check_algo(long long n, int *flag)//n = num_card
 {
     long long sum = 0, rem;//sum = suma co drugiej cyfry, rem = reszta (czyli kolejna cyfra)
     while(n != 0)
@@ -84,12 +84,12 @@ long long check_algo(long long n, int flag)//n = num_card
     if(sum % 10 != 0)//ten cały if ma oczywiście manipulować flagą dx
     {
         printf("INVALID\n");
-        flag = 0;
-        return flag;
+        (*flag) = 0;
+        return *flag;
     }
     else
     {
-        flag = 1;
-        return flag;
+        (*flag) = 1;
+        return *flag;
     }
 }
