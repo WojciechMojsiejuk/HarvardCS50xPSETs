@@ -1,6 +1,6 @@
-#include <stdio.h>//jak narazie, program sprawdza ilość cyfr, i powinien sprawdzać też
-#include <cs50.h> //częściowo zgodność z kartami AMEX, ale gubi typ long long przy
-#include <math.h> //przeniesieniu do funkcji ;-;
+#include <stdio.h>//program rozpoznaje karte, musi teraz tylko sprawdzic,
+#include <cs50.h> //czy jest poprawna wzgledem algorytmu
+#include <math.h> //+ usuniete niepotrzebne testu
 
 long long check_comp();
 
@@ -19,29 +19,30 @@ int main(void)
     }
     printf("number of digits %lli\n", countd);
     
-    long long test = floor(num_card / pow(10, 13) - 37);//test działania, z kartą o
-    printf("Wynik testu: %lli\n", test);                //numerze 378282246310005 powinien dać 0,
-    //i daje 0
     check_comp(num_card, countd);
-    //w przeciwieństwie do funkcji ;-;
     return 0;
 }
 
 
 
 long long check_comp(long long n,long long c)//num_card, countd
-{   //to niżej to pełne sprawdzenie, bo karty AMEX mają 15 cyfr, a dwie pierwsze to 34 lub 37
+{   
     printf("zmienne: %lli, %lli \n", n, c);
     if(((c == 15) && (floor(n / pow(10, 13))) == 34) || (floor(n / pow(10, 13)) == 37))
-    //tu widać, że n i c, czyli num_card i countd
-//mają typ integer, chociaż wcześniej były long long, przez co n num_card się rozwala
-    //if((c == 15) && (floor(n / pow(10, 13))) == 37)
     {
-        printf("karta AMEX rozpoznana\n");
+        printf("AMEX\n");
+    }
+    else if(((c == 16) && (floor(n / pow(10, 14))) == 51) || (floor(n / pow(10, 14)) == 52) || (floor(n / pow(10, 14)) == 53) || (floor(n / pow(10, 14)) == 54) || (floor(n / pow(10, 14)) == 55))
+    {
+        printf("MASTERCARD\n");
+    }
+    else if((((c == 13) && (floor(n / pow(10, 12))) == 4)) || ((c == 16) && (floor(n / pow(10, 15)) == 4)))
+    {
+        printf("VISA\n");
     }
     else
     {
-        printf("karta niewlasciwa, dwie pierwsze cyfry: %f\n", floor(n / pow(10, 13)));
-    }//przy else zwraca -1, niezależnie od typu finalnego, sprawdzałem
+        printf("INVALID\n");
+    }
     return 0;
 }
