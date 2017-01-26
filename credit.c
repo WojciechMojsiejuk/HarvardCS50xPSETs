@@ -3,6 +3,7 @@
 #include <math.h> //+ usuniete niepotrzebne testu
 
 long long check_comp();
+long long check_algo();
 
 int main(void)
 {
@@ -19,6 +20,7 @@ int main(void)
     }
     printf("number of digits %lli\n", countd);
     
+    check_algo(num_card);
     check_comp(num_card, countd);
     return 0;
 }
@@ -44,5 +46,21 @@ long long check_comp(long long n,long long c)//num_card, countd
     {
         printf("INVALID\n");
     }
+    return 0;
+}
+
+
+long long check_algo(long long n)//n = num_card
+{
+    long long sum = 0, rem, num_algo;//sum = suma co drugiej cyfry, rem = reszta (czyli kolejna cyfra, num_algo = kopia num na wszelki wypadek)
+    num_algo = n;
+    num_algo /= 10;
+    while(num_algo != 0)
+    {
+        rem = num_algo % 10;
+        sum = sum + rem;
+        num_algo = num_algo / 100;
+    }
+    printf("suma co drugich cyfr: %lli\n", sum);
     return 0;
 }
