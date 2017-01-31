@@ -2,8 +2,8 @@
 #include <cs50.h> //
 #include <math.h> //
 
-long long check_comp();
-long long check_algo();
+int check_comp();
+int check_algo();
 
 int main(void)
 {
@@ -13,7 +13,7 @@ int main(void)
     long long num_card = num_loop;//kopia, num_loop zmienia wartość po pętli,
     //num_card to główna zmienna z numerem karty
     
-    long long countd = 0;
+    int countd = 0;
     while(num_loop != 0)
     {
         num_loop /= 10;
@@ -40,7 +40,7 @@ int main(void)
 
 
 
-long long check_comp(long long n,long long c)//num_card, countd
+int check_comp(long long n, int c)//num_card, countd
 {   
     if(((c == 15) && (floor(n / pow(10, 13))) == 34) || (floor(n / pow(10, 13)) == 37))
     {
@@ -62,9 +62,9 @@ long long check_comp(long long n,long long c)//num_card, countd
 }
 
 
-long long check_algo(long long n, int *flag)//n = num_card
+int check_algo(long long n, int *flag)//n = num_card
 {
-    long long sum = 0, rem;//sum = suma co drugiej cyfry, rem = reszta (czyli kolejna cyfra)
+    int sum = 0, rem;//sum = suma co drugiej cyfry, rem = reszta (czyli kolejna cyfra)
     while(n != 0)
     {
         sum += n % 10;//dodanie kolejnej od końca cyfry, której nie trzeba mnożyć
