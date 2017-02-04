@@ -2,23 +2,33 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-//program ma przyjąć słowa oddzielone spacjami, zwracając tylko inicjały wielkimi literami)
+
 int main(void)
 {
     string s = get_string();
-    string initials = ""; //to mają być na koniec inicjały
-    char lit; //aktualnie przechwycona litera
-    // w tej chwili program zbiera wszystkie litery, później to zmienię
-    if(s != NULL)
+    int n = strlen(s);
+    char initials[30];// tablica na inicjały
+    
+    for(int i = 0; i < n; i++)
     {
-        for(int i = 0, n = strlen(s); i < n; i++) //iteracja przez znaki w s
+        
+        if(s[i] != 32) //wykrycie litery
         {
-            if(s[i] != ' ') //wykrycie litery
+            
+            const char c = toupper(s[i]);// c to podwyższona litera
+            strcat(initials, &c);//         dopisana do initials
+            
+            while((s[i+1] != 32) && (s[i+1] != '\0'))// szukanie następnej nie-litery
             {
-                lit = toupper(s[i]); //podwyższenie litery, potem dodanie do initials
-                strcat(initials, &lit);
+                
+                i++;
+                
             }
+            
         }
+        
     }
+    
     printf("%s\n", initials);
+    return 0;
 }
