@@ -15,8 +15,8 @@ int main(void)
         if(s[i] != 32) //wykrycie litery
         {
             
-            const char c = toupper(s[i]);// c to podwyższona litera
-            strcat(initials, &c);//         dopisana do initials
+            const char c = toupper(s[i]);// c to podwyższona litera, const wymagana do działania strcat według kompilatora
+            strcat(initials, &c);//         dopisana do initials, bez & się nie kompiluje
             
             while((s[i+1] != 32) && (s[i+1] != '\0'))// szukanie następnej nie-litery
             {
