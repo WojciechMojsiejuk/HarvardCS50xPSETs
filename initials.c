@@ -2,34 +2,21 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
+//program ma przyjąć słowa oddzielone spacjami, zwracając tylko inicjały wielkimi literami)
 int main(void)
 {
-    string s = get_string();
-    int n = strlen(s);
-    char initials[1000] = "";// tablica na inicjały, bez zainicjonowania na pusto daje dziwne znaki na początku (??? dx)
-    
-    if(s != NULL)
-    {
-        for(int i = 0; i < n; i++)
+    string name = get_string();
+    int n = strlen(name);
+    if (name != NULL)
         {
-        
-            if(s[i] != 32) //wykrycie litery, tylko spacje mają być ignorowane
+            for(int i = 0; i < n; i++) //iteracja przez znaki 
             {
-            
-                const char c = toupper(s[i]);// c to podwyższona litera, const wymagana do działania strcat według kompilatora
-                strcat(initials, &c);//         dopisana do initials, bez & się nie kompiluje
-            
-                while((s[i] != 32) && (i < n))// szukanie następnej nie-litery
+                if(name[i]>=65&&name[i]<=90) //wykrycie litery
                 {
-                
-                    i++;
-                
+                    char initials = toupper(name[i]);
+                    printf("%c", initials);
                 }
             }
-        
         }
-    }
-    printf("%s\n", initials);
-    return 0;
-}
+    
+}  
