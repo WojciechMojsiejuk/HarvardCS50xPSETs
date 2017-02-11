@@ -22,12 +22,12 @@ int main(int argc, string argv[])
     {
         if((atoi(&ptext[i]) >= 97) && (atoi(&ptext[i]) <= 122))
         {
-            c = (ptext[i] - 97 + k) % 26;
+            c = (ptext[i] - 97 + k) % 26 + 97;
             printf("%c", c);
         }
         else if((atoi(&ptext[i]) >= 65) && (atoi(&ptext[i]) <= 90))
         {
-            c = (ptext[i] - 65 + k) % 26;
+            c = (ptext[i] - 65 + k) % 26 + 65;
             printf("%c", c);
         }
     }
