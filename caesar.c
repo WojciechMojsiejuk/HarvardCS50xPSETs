@@ -20,16 +20,21 @@ int main(int argc, string argv[])
 //sprawdza, czy jest z przedziału dużych lub małych liter, jeśli tak to sprawdza jaka jest szyfrowana wartość znaku, po czym ją printuje
     for(int i = 0, n = strlen(ptext); i < n; i++)
     {
-        if((atoi(&ptext[i]) >= 97) && (atoi(&ptext[i]) <= 122))
+        if((ptext[i] >= 97) && (ptext[i] <= 122))
         {
             c = (ptext[i] - 97 + k) % 26 + 97;
             printf("%c", c);
         }
-        else if((atoi(&ptext[i]) >= 65) && (atoi(&ptext[i]) <= 90))
+        else if((ptext[i] >= 65) && (ptext[i] <= 90))
         {
             c = (ptext[i] - 65 + k) % 26 + 65;
             printf("%c", c);
         }
+        else
+        {
+            printf("%c", ptext[i]);
+        }
     }
     printf("\n");
     return 0;
+}
